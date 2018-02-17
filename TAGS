@@ -1,36 +1,17 @@
 
-./tests/Main.hs,156
-module Main Main0,1
-url url6,7
-day0 day08,9
-testDayQuery testDayQuery10,11
-testRangeQuery testRangeQuery15,16
-tests tests20,21
-main main22,23
-
-./src/Main.hs,800
+./tests/Main.hs,160
 module Main Main1,2
-data WeatherField WeatherField20,21
-data WeatherField = WeatherField WeatherField20,21
-data WeatherField = WeatherField {date date20,21
-data WeatherField = WeatherField {date :: Text, temperature temperature20,21
-instance instance23,24
-dayHandler dayHandler33,34
-dayHandler dayHandler34,35
-dayPutHandler dayPutHandler44,45
-dayPutHandler dayPutHandler45,46
-insertHandler insertHandler55,56
-insertHandler insertHandler56,57
-updateHandler updateHandler62,63
-updateHandler updateHandler63,64
-notFoundHandler notFoundHandler68,69
-notFoundHandler notFoundHandler69,70
---emptyJSONObject --emptyJSONObject72,73
-emptyJSONResponse emptyJSONResponse73,74
-listToOutput listToOutput76,77
-listToOutput listToOutput77,78
-main main81,82
-main main82,83
+url url10,11
+day0 day012,13
+testDayQuery testDayQuery14,15
+testRangeQuery testRangeQuery19,20
+tests tests26,27
+main main28,29
+
+./src/Main.hs,56
+module Main Main1,2
+main main19,20
+main main20,21
 
 ./src/DB/Main.hs,332
 data WeatherField WeatherField13,14
@@ -44,6 +25,28 @@ writeToFile writeToFile44,45
 writeToFile writeToFile45,46
 showDateTime showDateTime51,52
 showDateTime showDateTime52,53
+
+./src/WeatherService/Service.hs,802
+module WeatherService.Service WeatherService.Service1,2
+data WeatherField WeatherField24,25
+data WeatherField = WeatherField WeatherField24,25
+data WeatherField = WeatherField {date date24,25
+data WeatherField = WeatherField {date :: Text, temperature temperature24,25
+instance instance27,28
+dayHandler dayHandler37,38
+dayHandler dayHandler38,39
+dayPutHandler dayPutHandler48,49
+dayPutHandler dayPutHandler49,50
+insertHandler insertHandler59,60
+insertHandler insertHandler60,61
+updateHandler updateHandler66,67
+updateHandler updateHandler67,68
+notFoundHandler notFoundHandler72,73
+notFoundHandler notFoundHandler73,74
+--emptyJSONObject --emptyJSONObject76,77
+emptyJSONResponse emptyJSONResponse77,78
+listToOutput listToOutput80,81
+listToOutput listToOutput81,82
 
 ./Setup.hs,15
 main main1,2

@@ -1,8 +1,12 @@
+{-# LANGUAGE OverloadedStrings #-}
 module Main where
 
 import Test.Tasty (testGroup)
 import Test.HTTP
 import Data.List (isInfixOf)
+import Data.Aeson (decode)
+import WeatherService.Service
+import qualified Data.ByteString.Lazy.Char8 as LB
 
 url = "http://localhost:8000/weather/"
 
@@ -15,6 +19,8 @@ testDayQuery = httpTestCase "Weather Service Day Query" url $ do
 
 testRangeQuery = httpTestCase "Weather Service Range Query" url $ do
     landing <- get "range/2017-01-01/2017-01-02"
+    let days = decode (LB.pack landing) :: Maybe [WeatherField]
+    debug (show days)
     assert "Includes initial data" $ day0 `isInfixOf` landing
     debug landing
 
