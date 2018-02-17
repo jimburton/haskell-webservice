@@ -22,17 +22,19 @@ In this case the URL needs to include the temperature, e.g.
     http://localhost:8000/date/1970-01-01/0
 
 If the date already exists, the temperature is updated. If not, a new record is added to the 
-database. This call will return 200 and an empty JSON object if evrything went OK.
+database. This call will return 200 and an empty JSON object if everything went OK.
 
-To set the project up you need to start by populating the database:
+To set the project up you need to start by building the code and populating the database:
 
     $ cabal sandbox init
 	$ cabal configure
 	$ cabal install
+	$ runhaskell src/DB/Main.hs
 	$ .cabal-sandbox/bin/haskell-webservice 
     Listening for http:// on port 8000
 
-Once the service is running you can interact with it in the browser or using `curl`:
+The step to build the datbase only needs to be done once. Once the service is running you 
+can interact with it in the browser or using something like `curl`:
 
     $ curl http://localhost:8000/weather/date/2017-01-01
 	[{"date":"2017-01-01","temperature":-23.164497}]
@@ -42,8 +44,8 @@ And you can run the tests using `cabal test`.
 ## Assignment
 
 Your assignment is to extend the webservice in various ways. Before doing so you should read 
-the first two chapters of the [Happstack Book](http://happstack.com/docs/crashcourse/index.html). 
-You may also need to become familiar with the docs for [HappStack](https://hackage.haskell.org/package/happstack-server)
+the first two chapters of the [HappStack Book](http://happstack.com/docs/crashcourse/index.html). 
+You may also need to check the docs for [HappStack](https://hackage.haskell.org/package/happstack-server)
 and [sqlite-simple](https://hackage.haskell.org/package/sqlite-simple-0.4.14.0/docs/Database-SQLite-Simple.html), 
 the library we are using to interact with the database.
 
@@ -77,5 +79,5 @@ is accepted.
 
 20 marks are available for each of the four criteria, with 20 marks available for the elegance, efficiency
 and readability of the code. Read one of the Haskell style guides linked to from studentcentral and use
-the `hlint` tool to improve the quality of your code. These marking criteria are indicative, meaning that
+the `hlint` tool to improve your mark in this criterion. These marking criteria are indicative, meaning that
 I may award extra marks for work that uses an interesting approach and shows independent learning. 
