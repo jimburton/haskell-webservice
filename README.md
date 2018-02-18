@@ -33,13 +33,14 @@ To set the project up you need to start by building the code and populating the 
 	$ .cabal-sandbox/bin/haskell-webservice 
     Listening for http:// on port 8000
 
-The step to build the datbase only needs to be done once. Once the service is running you 
+The step to build the database only needs to be done once. Once the service is running you 
 can interact with it in the browser or using something like `curl`:
 
     $ curl http://localhost:8000/weather/date/2017-01-01
 	[{"date":"2017-01-01","temperature":-23.164497}]
 	
-And you can run the tests using `cabal test`.
+Run the tests using `cabal test` and read the log, which will be in a file called something like 
+`dist/test/haskell-webservice-0.1.0.0-test-webservice.log`.
 
 ## Assignment
 
@@ -47,19 +48,18 @@ Your assignment is to extend the webservice in various ways. Before doing so you
 the first two chapters of the [HappStack Book](http://happstack.com/docs/crashcourse/index.html). 
 You may also need to check the docs for [HappStack](https://hackage.haskell.org/package/happstack-server)
 and [sqlite-simple](https://hackage.haskell.org/package/sqlite-simple-0.4.14.0/docs/Database-SQLite-Simple.html), 
-the library we are using to interact with the database.
+the library we are using to interact with the database. As you work on the methods, keep running the tests
+and calling the webservice with `curl` or a browser to see what comes back.
 
 1. Add a new endpoint to the webservice, `weather/range/d1/d2`, where `d1` and `d2` are dates in the format 
 `YYYY-mm-dd`. When this endpoint receives a `GET` request it should return all records in the database that
 fall between `d1` and `d2` (i.e. greater than or equal to `d1` and less than or equal to `d2`) as an array of 
-JSON objects. Other request methods should result in a 405 response code ("Method not allowed") and an empty
-JSON object.
+JSON objects. 
 
 2. Add a new endpoint to the webservice, `weather/max/d1/d2`, where `d1` and `d2` are dates in the format 
 `YYYY-mm-dd`. When this endpoint receives a `GET` request it should return the details of the day with the
 maximum temperature between `d1` and `d2` (i.e. greater than or equal to `d1` and less than or equal to `d2`) 
-as an array containing a single JSON. Other request methods should result in a 405 response code ("Method not allowed") 
-and an empty JSON object.
+as an array containing a single JSON. 
 
 3. Add a new endpoint to the webservice, `weather/above/t`, where `t` is a signed floating point number. 
 When this endpoint receives a `GET` request it should return all records in the database where the
