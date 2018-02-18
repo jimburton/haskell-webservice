@@ -1,12 +1,15 @@
 
-./tests/Main.hs,160
+./tests/Main.hs,259
 module Main Main1,2
 url url10,11
 day0 day012,13
-testDayQuery testDayQuery14,15
-testRangeQuery testRangeQuery19,20
-tests tests26,27
-main main28,29
+hottestDay hottestDay13,14
+testDayQuery testDayQuery15,16
+testRangeQuery testRangeQuery20,21
+testMaxQuery testMaxQuery27,28
+testAboveQuery testAboveQuery31,32
+tests tests39,40
+main main41,42
 
 ./src/Main.hs,56
 module Main Main1,2
