@@ -4,12 +4,12 @@ import           Control.Applicative
 import qualified Data.Text as T
 import           Database.SQLite.Simple
 import           Database.SQLite.Simple.FromRow
-import Data.Dates
-import System.IO
-import Data.Time.Format
-import System.Random
-import Data.List.Split
-import Data.Char
+import           System.IO
+import           Data.Time.Format
+import           System.Random
+import           Data.List.Split
+import           Data.Char
+import           Data.Dates
 
 data WeatherField = WeatherField T.Text Float deriving (Show)
 
@@ -22,6 +22,7 @@ instance ToRow WeatherField where
 main :: IO ()
 main = do
   conn <- open "data/np-weather.db"
+  execute_ conn "DROP TABLE IF EXISTS weather"
   execute_ conn "CREATE TABLE IF NOT EXISTS weather (id INTEGER PRIMARY KEY, the_date TEXT, temperature REAL)"
   populateDB conn
   r <- query_ conn "SELECT the_date, temperature FROM weather" :: IO [WeatherField]

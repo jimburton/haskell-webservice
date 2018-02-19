@@ -24,22 +24,55 @@ In this case the URL needs to include the temperature, e.g.
 If the date already exists, the temperature is updated. If not, a new record is added to the 
 database. This call will return 200 and an empty JSON object if everything went OK.
 
-To set the project up you need to start by building the code and populating the database:
+To set the project up you need to start by making sure that you have the latest version of
+`cabal-install` on this machine:
+
+    $ cabal update
+	$ cabal install cabal-install
+	
+Now you can start building the code:
 
     $ cabal sandbox init
 	$ cabal configure
+	
+This last step may report that several libraries are missing. For example:
+
+    $ cabal configure
+    Resolving dependencies...
+    Configuring haskell-webservice-0.1.0.0...
+    cabal: At least the following dependencies are missing:
+    aeson -any,
+    happstack-server -any,
+    hslogger -any,
+    sqlite-simple -any
+
+If so, install them now:
+
+	$ cabal install aeson happstack-server hslogger sqlite-simple
+
+Now you should be able to continue building the application:
+
+    $ cabal configure
+	$ cabal build
 	$ cabal install
-	$ runhaskell src/DB/Main.hs
-	$ .cabal-sandbox/bin/haskell-webservice 
+	$ cabal run DB-setup
+
+The step to build the database only needs to be done once, but you can
+run it again if you want to restore the database to its original
+state. Now you can start the webservice:
+
+    $ cabal run webservice 
     Listening for http:// on port 8000
 
-The step to build the database only needs to be done once. Once the service is running you 
-can interact with it in the browser or using something like `curl`:
+
+Once the service is running you can interact with it in the
+browser or using something like `curl`:
 
     $ curl http://localhost:8000/weather/date/2017-01-01
 	[{"date":"2017-01-01","temperature":-23.164497}]
 	
-Run the tests using `cabal test` and read the log, which will be in a file called something like 
+While the service is running open a new terminal and run the tests with `cabal test`. 
+Read the log, which will be in a file called something like 
 `dist/test/haskell-webservice-0.1.0.0-test-webservice.log`.
 
 ## Assignment
