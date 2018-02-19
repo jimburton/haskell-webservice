@@ -30,7 +30,7 @@ testMaxQuery = httpTestCase "Weather Service Max Query" url $ do
     assert "Has max record" $ landing == hottestDay
 
 testAboveQuery = httpTestCase "Weather Service Above Query" url $ do
-    landing <- get "above/2017-01-01/2017-12-31/39" --should be two records
+    landing <- get "above/39" --should be two records
     let days = decode (LB.pack landing) :: Maybe [WeatherField]
     debug (show days)
     case days of
