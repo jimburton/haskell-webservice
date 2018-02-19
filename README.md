@@ -57,8 +57,8 @@ Now you should be able to continue building the application:
 	$ cabal install
 	$ cabal run DB-setup
 
-The step to build the database only needs to be done once, but you can
-run it again if you want to restore the database to its original
+The step to build the database only needs to be done once but you can
+run it any time you want to restore the database to its original
 state. Now you can start the webservice:
 
     $ cabal run webservice 
