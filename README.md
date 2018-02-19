@@ -2,7 +2,7 @@
 
 This project contains a web service written in Haskell using Happstack and SQLite.
 The web service provides an interface to (fictitious, randomly generated) weather 
-readings taken at North Pole during 2017. It has one endpoint, `weather/date/`,  
+readings taken at the North Pole during 2017. It has one endpoint, `weather/date/`,  
 the response to which will depend on the request type.
 
 If the webservice is running on `localhost` on port 8000 and receives a `GET` or
