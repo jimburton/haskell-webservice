@@ -57,8 +57,8 @@ Now you should be able to continue building the application:
 	$ cabal install
 	$ cabal run DB-setup
 
-The step to build the database only needs to be done once, but you can
-run it again if you want to restore the database to its original
+The step to build the database only needs to be done once but you can
+run it any time you want to restore the database to its original
 state. Now you can start the webservice:
 
     $ cabal run webservice 
@@ -92,7 +92,7 @@ JSON objects.
 2. Add a new endpoint to the webservice, `weather/max/d1/d2`, where `d1` and `d2` are dates in the format 
 `YYYY-mm-dd`. When this endpoint receives a `GET` request it should return the details of the day with the
 maximum temperature between `d1` and `d2` (i.e. greater than or equal to `d1` and less than or equal to `d2`) 
-as an array containing a single JSON. 
+as an array containing a single JSON object. 
 
 3. Add a new endpoint to the webservice, `weather/above/t`, where `t` is a signed floating point number. 
 When this endpoint receives a `GET` request it should return all records in the database where the
