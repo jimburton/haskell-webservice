@@ -27,10 +27,10 @@ database. This call will return 200 and an empty JSON object if everything went 
 ## Installation
 
 **If you are using Windows, you should install CygWin and use the CygWin terminal instead 
-of the Windows command prompt, as this has been known to cause problems with cabal.**
+of the Windows command prompt, as several of the packages you need require a bash-like environment.**
 
 **If you are working on this code in the labs, do not install it on a Windows drive (e.g. `~/W_DRIVE` 
-or `~/M_DRIVE`), as cabal is known to have problems with Windows network shares too.**
+or `~/M_DRIVE`), as cabal is known to have problems with Windows network shares.**
 
 To set the project up you need to start by making sure that you have the latest version of
 `cabal-install` on this machine:
