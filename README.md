@@ -24,16 +24,26 @@ In this case the URL needs to include the temperature, e.g.
 If the date already exists, the temperature is updated. If not, a new record is added to the 
 database. This call will return 200 and an empty JSON object if everything went OK.
 
+## Installation
+
+If you are using Windows, you should install CygWin and use the CYgWin terminal instead 
+of the Windows command prompt, as this has been known to cause problems with cabal.
+
+If you are working on this code in the labs, do not install it on a Windows drive (e.g. `~/W_DRIVE` 
+or `~/M_DRIVE`), as cabal is known to have problems with Windows drives too.
+
 To set the project up you need to start by making sure that you have the latest version of
 `cabal-install` on this machine:
 
     $ cabal update
-	$ cabal install cabal-install
+    $ cabal install cabal-install
 	
-Now you can start building the code:
+Now you can grab the code and start building it:
 
+    $ git clone https://github.com/jimburton/haskell-webservice
+    $ cd haskell-webservice
     $ cabal sandbox init
-	$ cabal configure
+    $ cabal configure
 	
 This last step may report that several libraries are missing. For example:
 
