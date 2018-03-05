@@ -26,7 +26,7 @@ database. This call will return 200 and an empty JSON object if everything went 
 
 ## Installation
 
-**If you are using Windows, you should install CygWin and use the CYgWin terminal instead 
+**If you are using Windows, you should install CygWin and use the CygWin terminal instead 
 of the Windows command prompt, as this has been known to cause problems with cabal.**
 
 **If you are working on this code in the labs, do not install it on a Windows drive (e.g. `~/W_DRIVE` 
