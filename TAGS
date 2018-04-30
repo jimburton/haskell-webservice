@@ -1,20 +1,6 @@
 
-./tests/Main.hs,259
-module Main Main1,2
-url url10,11
-day0 day012,13
-hottestDay hottestDay13,14
-testDayQuery testDayQuery15,16
-testRangeQuery testRangeQuery20,21
-testMaxQuery testMaxQuery27,28
-testAboveQuery testAboveQuery31,32
-tests tests39,40
-main main41,42
-
-./src/Main.hs,56
-module Main Main1,2
-main main19,20
-main main20,21
+./Setup.hs,15
+main main1,2
 
 ./src/DB/Main.hs,332
 data WeatherField WeatherField13,14
@@ -22,12 +8,17 @@ data WeatherField = WeatherField WeatherField13,14
 instance instance15,16
 main main21,22
 main main22,23
-populateDB populateDB30,31
-makeFile makeFile37,38
-writeToFile writeToFile44,45
+populateDB populateDB31,32
+makeFile makeFile38,39
 writeToFile writeToFile45,46
-showDateTime showDateTime51,52
+writeToFile writeToFile46,47
 showDateTime showDateTime52,53
+showDateTime showDateTime53,54
+
+./src/Main.hs,56
+module Main Main1,2
+main main19,20
+main main20,21
 
 ./src/WeatherService/Service.hs,802
 module WeatherService.Service WeatherService.Service1,2
@@ -44,12 +35,21 @@ insertHandler insertHandler59,60
 insertHandler insertHandler60,61
 updateHandler updateHandler66,67
 updateHandler updateHandler67,68
-notFoundHandler notFoundHandler72,73
-notFoundHandler notFoundHandler73,74
---emptyJSONObject --emptyJSONObject76,77
-emptyJSONResponse emptyJSONResponse77,78
-listToOutput listToOutput80,81
-listToOutput listToOutput81,82
+notFoundHandler notFoundHandler74,75
+notFoundHandler notFoundHandler75,76
+--emptyJSONObject --emptyJSONObject78,79
+emptyJSONResponse emptyJSONResponse79,80
+listToOutput listToOutput82,83
+listToOutput listToOutput83,84
 
-./Setup.hs,15
-main main1,2
+./tests/Main.hs,259
+module Main Main1,2
+url url10,11
+day0 day012,13
+hottestDay hottestDay13,14
+testDayQuery testDayQuery15,16
+testRangeQuery testRangeQuery20,21
+testMaxQuery testMaxQuery27,28
+testAboveQuery testAboveQuery31,32
+tests tests39,40
+main main41,42
