@@ -114,9 +114,21 @@ in a 405 response code ("Method not allowed") and an empty JSON object.
 
 ## Submission instructions
 
-Make a github account if you don't have one already. Clone this repository and save your work there.
-To submit your work, submit the address of your repository on studentcentral. No other form of submission
-is accepted.
+The submission instructions for Assignment 2 were originally to store your work in an online git repository
+and to submit the link on studentcentral. These instructions need to be changed for several reasons.
+What I'd now like you to do is to submit a zip file containing the project to studentcentral in the usual way.
+Before zipping up your work, use cabal to remove the sandbox and clean the project to reduce the size of the final archive.
+That is, you need to run the following commands:
+
+    $ cabal sandbox delete
+    $ cabal clean
+    
+If your work is in a public repository online please remove it straight away or make the repository private.
+Github provides free accounts for students that allow for private repositories.
+See https://help.github.com/articles/applying-for-a-student-developer-pack/
+
+Please double check that your zip file contains your work before you submit it.
+Do not use 7z, rar or other proprietary compression tools.
 
 ## Marking criteria
 
