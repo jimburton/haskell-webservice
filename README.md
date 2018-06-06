@@ -43,29 +43,12 @@ Now you can grab the code and start building it:
     $ git clone https://github.com/jimburton/haskell-webservice
     $ cd haskell-webservice
     $ cabal sandbox init
-    $ cabal configure
+    $ cabal configure --enable-tests
 	
-This last step may report that several libraries are missing. For example:
+You can now continue building the application and set up the database:
 
-    $ cabal configure
-    Resolving dependencies...
-    Configuring haskell-webservice-0.1.0.0...
-    cabal: At least the following dependencies are missing:
-    aeson -any,
-    happstack-server -any,
-    hslogger -any,
-    sqlite-simple -any
-
-If so, install them now:
-
-	$ cabal install aeson happstack-server hslogger sqlite-simple
-
-Now you should be able to continue building the application:
-
-    $ cabal configure
-	$ cabal build
-	$ cabal install
-	$ cabal run DB-setup
+    $ cabal install && cabal install http-test tasty
+    $ cabal run DB-setup
 
 The step to build the database only needs to be done once but you can
 run it any time you want to restore the database to its original
