@@ -97,9 +97,16 @@ in a 405 response code ("Method not allowed") and an empty JSON object.
 
 ## Submission instructions
 
-Make a github account if you don't have one already. Clone this repository and save your work there.
-To submit your work, submit the address of your repository on studentcentral. No other form of submission
-is accepted.
+Submit a **zip file** (not RAR or anything else) via studentcentral. Before zipping the project use `cabal`
+to delete the sandbox and remove all dependencies; otherwise the file will be too large to submit 
+on studentcentral. Clean the project and zip it as follows:
+
+```
+haskell-webservice$ cabal clean
+haskell-webservice$ cabal sandbox delete
+haskell-webservice$ cd ..
+$ zip -r CI285-assignment2-YOURNAME.zip haskell-webservice/
+```
 
 ## Marking criteria
 
