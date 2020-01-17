@@ -42,29 +42,11 @@ Now you can grab the code and start building it:
 
     $ git clone https://github.com/jimburton/haskell-webservice
     $ cd haskell-webservice
-    $ cabal sandbox init
     $ cabal configure
 	
-This last step may report that several libraries are missing. For example:
+Now you can start setting up the application. It relies on a local SQLite database. There is a cabal target to
+install it:
 
-    $ cabal configure
-    Resolving dependencies...
-    Configuring haskell-webservice-0.1.0.0...
-    cabal: At least the following dependencies are missing:
-    aeson -any,
-    happstack-server -any,
-    hslogger -any,
-    sqlite-simple -any
-
-If so, install them now:
-
-	$ cabal install aeson happstack-server hslogger sqlite-simple
-
-Now you should be able to continue building the application:
-
-    $ cabal configure
-	$ cabal build
-	$ cabal install
 	$ cabal run DB-setup
 
 The step to build the database only needs to be done once but you can
@@ -81,13 +63,16 @@ browser or using something like `curl`:
     $ curl http://localhost:8000/weather/date/2017-01-01
 	[{"date":"2017-01-01","temperature":-23.164497}]
 	
-While the service is running open a new terminal and run the tests with `cabal test`. 
+While the service is running open a new terminal and run the tests with 
+
+    cabal run test-webservice
+
 Read the log, which will be in a file called something like 
 `dist/test/haskell-webservice-0.1.0.0-test-webservice.log`.
 
-## Assignment
+## Exercises
 
-Your assignment is to extend the webservice in various ways. Before doing so you should read 
+Your job is to extend the webservice in various ways. Before doing so you should read 
 the first two chapters of the [HappStack Book](http://happstack.com/docs/crashcourse/index.html). 
 You may also need to check the docs for [HappStack](https://hackage.haskell.org/package/happstack-server)
 and [sqlite-simple](https://hackage.haskell.org/package/sqlite-simple-0.4.14.0/docs/Database-SQLite-Simple.html), 
@@ -112,15 +97,3 @@ in a 405 response code ("Method not allowed") and an empty JSON object.
 4. **Extension** Convert the web service to use the `web-routes` library as described in 
 [chapter 7 of the HappStack Book](http://happstack.com/docs/crashcourse/WebRoutes.html#web-routes).
 
-## Submission instructions
-
-Make a github account if you don't have one already. Clone this repository and save your work there.
-To submit your work, submit the address of your repository on studentcentral. No other form of submission
-is accepted.
-
-## Marking criteria
-
-20 marks are available for each of the four criteria, with 20 marks available for the elegance, efficiency
-and readability of the code. Read one of the Haskell style guides linked to from studentcentral and use
-the `hlint` tool to improve your mark in this criterion. These marking criteria are indicative, meaning that
-I may award extra marks for work that uses an interesting approach and shows independent learning. 
