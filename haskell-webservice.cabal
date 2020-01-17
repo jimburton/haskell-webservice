@@ -33,6 +33,9 @@ executable           webservice
                      , happstack-server
                      , text
                      , transformers
+                     , web-routes
+                     , web-routes-th
+                     , web-routes-happstack
   hs-source-dirs:      src
   default-language:    Haskell2010
 
@@ -77,4 +80,7 @@ test-suite           test-webservice
                    , happstack-server
                    , text
                    , transformers
+                   , web-routes
+                   , web-routes-th
+                   , web-routes-happstack
     default-language:    Haskell2010
