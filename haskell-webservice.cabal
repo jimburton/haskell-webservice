@@ -19,6 +19,7 @@ cabal-version:       >=1.10
 executable           webservice
   main-is:             Main.hs
   other-modules:       WeatherService.Service
+                     , WeatherService.Sitemap
   other-extensions:    OverloadedStrings
                      , FlexibleContexts
                      , TypeFamilies
@@ -67,6 +68,7 @@ test-suite           test-webservice
     type:            exitcode-stdio-1.0
     main-is:         Main.hs
     other-modules:   WeatherService.Service
+                   , WeatherService.Sitemap
     other-extensions:    OverloadedStrings
     hs-source-dirs:  tests, src
     build-depends:   base
