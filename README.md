@@ -119,3 +119,6 @@ the methods, keep running the tests and calling the webservice with
    described in [chapter 7 of the HappStack
    Book](http://happstack.com/docs/crashcourse/WebRoutes.html#web-routes).
 
+Compare your work to mine in the `solutions` branch. There is a 
+version of the webservice that uses `web-routes` in `src/Main.hs`
+and a version that doesn't in `src/Main-NoRoutes.hs`.
