@@ -47,7 +47,7 @@ dayHandler d conn = do
     [] -> notFoundHandler
     _  -> ok $ toResponse (listToOutput r)
 
-{-| Handle PUT reuests for date/temperature pairs. -}
+{-| Handle PUT requests for date/temperature pairs. -}
 dayPutHandler :: Text -> Text -> Connection -> ServerPart Response
 dayPutHandler d t conn = do
   r <- liftIO (queryNamed conn "SELECT the_date, temperature \

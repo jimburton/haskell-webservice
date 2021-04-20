@@ -17,12 +17,16 @@ If no data exists for the date in question, the response code will be 404 and th
 will consist of an empty JSON array.
 
 We can also make `PUT` requests to insert or update a date/temperature pair in the database.
-In this case the URL needs to include the temperature, e.g.
+In this case the URL needs to include the temperature. The easiest way to make a `PUT`
+request is by using `curl`:
 
-    http://localhost:8000/date/1970-01-01/0
+    $ curl -X PUT http://localhost:8000/date/1970-01-01/42
+	[]
+	$ curl http://localhost:8000/weather/date/1970-01-01
+    [{"temperature":42,"date":"1970-01-01"}]
 
 If the date already exists, the temperature is updated. If not, a new record is added to the 
-database. This call will return 200 and an empty JSON object if everything went OK.
+database. This call will return 200 and an empty JSON array if everything went OK.
 
 ## Installation
 

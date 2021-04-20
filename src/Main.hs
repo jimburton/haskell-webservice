@@ -19,9 +19,8 @@ main = do
   conn <- open "data/np-weather.db"
   simpleHTTP nullConf $  do
     setHeaderM "Content-Type" "application/json"
-    msum [
-      dirs "weather/date" $ do method [GET, POST]
-                               path $ \d -> dayHandler d conn
-      , dirs "weather/date" $ do method PUT
-                                 path $ \d -> path $ \t -> dayPutHandler d t conn
-      ]
+    msum [ dirs "weather/date" $ do method PUT
+                                    path $ \d -> path $ \t -> dayPutHandler d t conn
+         , dirs "weather/date" $ do method [GET, POST]
+                                    path $ \d -> dayHandler d conn 
+         ]
