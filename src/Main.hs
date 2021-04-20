@@ -1,8 +1,6 @@
 {-# LANGUAGE OverloadedStrings, FlexibleContexts, TypeFamilies, QuasiQuotes, TemplateHaskell, DeriveGeneric #-}
 module Main where
-{-| Semester 2 assignment for CI285, University of Brighton
-    Jim Burton <j.burton@brighton.ac.uk>
--}
+
 import           System.Log.Logger ( updateGlobalLogger
                                    , rootLoggerName
                                    , setLevel

@@ -6,9 +6,7 @@ module WeatherService.Service (WeatherField(..)
                               , maxRangeHandler
                               , aboveTempHandler
                               , methodNotAllowedHandler) where
-{-| Semester 2 assignment for CI285, University of Brighton
-    Jim Burton <j.burton@brighton.ac.uk>
--}
+
 import           System.Log.Logger ( updateGlobalLogger
                                    , rootLoggerName
                                    , setLevel
@@ -34,14 +32,14 @@ import WeatherService.Sitemap
 data WeatherField = WeatherField {date :: Text, temperature :: Float}
                     deriving (Generic, Show)
 
-instance FromRow WeatherField where -- ^ Marshal data from DB to our ADT
+instance FromRow WeatherField where -- Marshal data from DB to our ADT
   fromRow = WeatherField <$> field <*> field
 
-instance ToRow WeatherField where -- ^ Marshal data from our ADT to the DB
+instance ToRow WeatherField where -- Marshal data from our ADT to the DB
   toRow (WeatherField theDate temp) = toRow (theDate, temp)
 
-instance ToJSON   WeatherField -- ^ Marshal data from our ADT to JSON
-instance FromJSON WeatherField -- ^ Marshal data from JSON to our ADT
+instance ToJSON   WeatherField -- Marshal data from our ADT to JSON
+instance FromJSON WeatherField -- Marshal data from JSON to our ADT
 
 
 {-| Handle requests for a single date. -}
@@ -72,7 +70,7 @@ insertHandler :: Text -> Text -> Connection -> RouteT Sitemap (ServerPartT IO) R
 insertHandler d t conn = do
   let t' = (read $ unpack t)::Float
   liftIO (execute conn "INSERT INTO weather (the_date, temperature) VALUES (?,?)" (WeatherField d t'))
-  ok $ emptyJSONResponse
+  ok emptyJSONResponse
 
 {-| Update a date/temperature pair. -}
 updateHandler :: Text -> Text -> Connection -> RouteT Sitemap (ServerPartT IO) Response
@@ -80,7 +78,7 @@ updateHandler d t conn = do
   let t' = (read $ unpack t)::Float
   liftIO (executeNamed conn "UPDATE weather SET temperature = :t WHERE the_date = :d"
            [":t" := t, ":d" := d])
-  ok $ emptyJSONResponse
+  ok emptyJSONResponse
 
 {-| Task One: Range Handler -}
 rangeHandler :: Text -> Text -> Connection -> RouteT Sitemap (ServerPartT IO) Response
