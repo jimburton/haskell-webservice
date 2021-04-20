@@ -14,7 +14,7 @@ this:
     [{"date":"2017-01-01","temperature":-23.164497}]
 
 If no data exists for the date in question, the response code will be 404 and the body 
-will consist of an empty JSON object.
+will consist of an empty JSON array.
 
 We can also make `PUT` requests to insert or update a date/temperature pair in the database.
 In this case the URL needs to include the temperature, e.g.
