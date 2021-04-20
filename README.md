@@ -26,26 +26,29 @@ database. This call will return 200 and an empty JSON object if everything went 
 
 ## Installation
 
+<!---
 **If you are using Windows, you should install CygWin and use the CygWin terminal instead 
 of the Windows command prompt, as several of the packages you need require a bash-like environment.**
 
 **If you are working on this code in the labs, do not install it on a Windows drive (e.g. `~/W_DRIVE` 
 or `~/M_DRIVE`), as cabal is known to have problems with Windows network shares.**
+-->
 
-To set the project up you need to start by making sure that you have the latest version of
-`cabal-install` on this machine:
+This project relies on a local SQLite database, so you need to have
+SQLite installed to run the code. On Debian-based Linux systems
+(including Ubuntu) you can do this with the command `sudo apt install
+sqlite3`. [These
+instructions](https://www.sqlitetutorial.net/download-install-sqlite/)
+cover other operating systems.
 
-    $ cabal update
-    $ cabal install cabal-install
-	
-Now you can grab the code and start building it:
+Set up the project in the usual way:
 
     $ git clone https://github.com/jimburton/haskell-webservice
     $ cd haskell-webservice
     $ cabal configure
 	
-Now you can start setting up the application. It relies on a local SQLite database. There is a cabal target to
-install it:
+Now you can start setting up the application. There is a cabal target
+to install the database:
 
 	$ cabal run DB-setup
 
@@ -57,8 +60,9 @@ state. Now you can start the webservice:
     Listening for http:// on port 8000
 
 
-Once the service is running you can interact with it in the
-browser or using something like `curl`:
+Once the service is running you can interact with it in the browser by
+going to http://localhost:8000/weather/date/2017-01-01 or in a
+terminal by using something like `curl`:
 
     $ curl http://localhost:8000/weather/date/2017-01-01
 	[{"date":"2017-01-01","temperature":-23.164497}]
@@ -67,33 +71,42 @@ While the service is running open a new terminal and run the tests with
 
     cabal run test-webservice
 
-Read the log, which will be in a file called something like 
-`dist/test/haskell-webservice-0.1.0.0-test-webservice.log`.
+Note that one test passes but three fail. You can get them all
+working by completing the exercise below.
 
 ## Exercises
 
-Your job is to extend the webservice in various ways. Before doing so you should read 
-the first two chapters of the [HappStack Book](http://happstack.com/docs/crashcourse/index.html). 
-You may also need to check the docs for [HappStack](https://hackage.haskell.org/package/happstack-server)
-and [sqlite-simple](https://hackage.haskell.org/package/sqlite-simple-0.4.14.0/docs/Database-SQLite-Simple.html), 
-the library we are using to interact with the database. As you work on the methods, keep running the tests
-and calling the webservice with `curl` or a browser to see what comes back.
+Your job is to extend the webservice in various ways. Before doing so
+you should read the first two chapters of the [HappStack
+Book](http://happstack.com/docs/crashcourse/index.html).  You may also
+need to look at the docs for
+[HappStack](https://hackage.haskell.org/package/happstack-server) and
+[sqlite-simple](https://hackage.haskell.org/package/sqlite-simple-0.4.14.0/docs/Database-SQLite-Simple.html),
+the library we are using to interact with the database. As you work on
+the methods, keep running the tests and calling the webservice with
+`curl` or a browser to see what comes back.
 
-1. Add a new endpoint to the webservice, `weather/range/d1/d2`, where `d1` and `d2` are dates in the format 
-`YYYY-mm-dd`. When this endpoint receives a `GET` request it should return all records in the database that
-fall between `d1` and `d2` (i.e. greater than or equal to `d1` and less than or equal to `d2`) as an array of 
-JSON objects. 
+1. Add a new endpoint to the webservice, `weather/range/d1/d2`, where
+`d1` and `d2` are dates in the format `YYYY-mm-dd`. When this endpoint
+receives a `GET` request it should return all records in the database
+that fall between `d1` and `d2` (i.e. greater than or equal to `d1`
+and less than or equal to `d2`) as an array of JSON objects.
 
-2. Add a new endpoint to the webservice, `weather/max/d1/d2`, where `d1` and `d2` are dates in the format 
-`YYYY-mm-dd`. When this endpoint receives a `GET` request it should return the details of the day with the
-maximum temperature between `d1` and `d2` (i.e. greater than or equal to `d1` and less than or equal to `d2`) 
-as an array containing a single JSON object. 
+2. Add a new endpoint to the webservice, `weather/max/d1/d2`, where
+`d1` and `d2` are dates in the format `YYYY-mm-dd`. When this endpoint
+receives a `GET` request it should return the details of the day with
+the maximum temperature between `d1` and `d2` (i.e. greater than or
+equal to `d1` and less than or equal to `d2`) as an array containing a
+single JSON object.
 
-3. Add a new endpoint to the webservice, `weather/above/t`, where `t` is a signed floating point number. 
-When this endpoint receives a `GET` request it should return all records in the database where the
-temperature is greater than or equal to `t` as an array of JSON objects. Other request methods should result 
-in a 405 response code ("Method not allowed") and an empty JSON object.
+3. Add a new endpoint to the webservice, `weather/above/t`, where `t`
+is a signed floating point number.  When this endpoint receives a
+`GET` request it should return all records in the database where the
+temperature is greater than or equal to `t` as an array of JSON
+objects. Other request methods should result in a 405 response code
+("Method not allowed") and an empty JSON object.
 
-4. **Extension** Convert the web service to use the `web-routes` library as described in 
-[chapter 7 of the HappStack Book](http://happstack.com/docs/crashcourse/WebRoutes.html#web-routes).
+4. Convert the web service to use the `web-routes` library as
+described in [chapter 7 of the HappStack
+Book](http://happstack.com/docs/crashcourse/WebRoutes.html#web-routes).
 
