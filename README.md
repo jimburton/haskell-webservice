@@ -87,26 +87,35 @@ the methods, keep running the tests and calling the webservice with
 `curl` or a browser to see what comes back.
 
 1. Add a new endpoint to the webservice, `weather/range/d1/d2`, where
-`d1` and `d2` are dates in the format `YYYY-mm-dd`. When this endpoint
-receives a `GET` request it should return all records in the database
-that fall between `d1` and `d2` (i.e. greater than or equal to `d1`
-and less than or equal to `d2`) as an array of JSON objects.
+   `d1` and `d2` are dates in the format `YYYY-mm-dd`. When this
+   endpoint receives a `GET` request it should return all records in
+   the database that fall between `d1` and `d2` (i.e. greater than or
+   equal to `d1` and less than or equal to `d2`) as an array of JSON
+   objects.
+
+   Start by changing the `main` function by adding a new route `dirs
+   "weather/range" ...` to the list it contains. Copy one of the
+   existing routes for the format. This route needs to call a new
+   function that you will define in `WeatherService.Service`. Call it
+   `rangeHandler`. Again, you can copy and adapt one of the existing
+   functions such as `dayHandler` or `dayPutHandler` to get this
+   working. Test your function in the browser and/or a terminal.
 
 2. Add a new endpoint to the webservice, `weather/max/d1/d2`, where
-`d1` and `d2` are dates in the format `YYYY-mm-dd`. When this endpoint
-receives a `GET` request it should return the details of the day with
-the maximum temperature between `d1` and `d2` (i.e. greater than or
-equal to `d1` and less than or equal to `d2`) as an array containing a
-single JSON object.
+   `d1` and `d2` are dates in the format `YYYY-mm-dd`. When this
+   endpoint receives a `GET` request it should return the details of
+   the day with the maximum temperature between `d1` and `d2`
+   (i.e. greater than or equal to `d1` and less than or equal to `d2`)
+   as an array containing a single JSON object.
 
 3. Add a new endpoint to the webservice, `weather/above/t`, where `t`
-is a signed floating point number.  When this endpoint receives a
-`GET` request it should return all records in the database where the
-temperature is greater than or equal to `t` as an array of JSON
-objects. Other request methods should result in a 405 response code
-("Method not allowed") and an empty JSON object.
+   is a signed floating point number.  When this endpoint receives a
+   `GET` request it should return all records in the database where
+   the temperature is greater than or equal to `t` as an array of JSON
+   objects. Other request methods should result in a 405 response code
+   ("Method not allowed") and an empty JSON object.
 
 4. Convert the web service to use the `web-routes` library as
-described in [chapter 7 of the HappStack
-Book](http://happstack.com/docs/crashcourse/WebRoutes.html#web-routes).
+   described in [chapter 7 of the HappStack
+   Book](http://happstack.com/docs/crashcourse/WebRoutes.html#web-routes).
 
