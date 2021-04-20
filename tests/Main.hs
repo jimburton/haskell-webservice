@@ -12,7 +12,7 @@ url = "http://localhost:8000/weather/"
 
 day0 = "{\"temperature\":-23.164497,\"date\":\"2017-01-01\"}"
          
-hottestDay = "[{\"date\":\"2017-09-15\",\"temperature\":39.502533}]"
+hottestDay = "[{\"temperature\":39.502533,\"date\":\"2017-09-15\"}]"
 
 testDayQuery = httpTestCase "Weather Service Day Query" url $ do
     landing <- get "date/2017-01-01"
