@@ -28,28 +28,6 @@ import qualified Data.ByteString.Lazy.Char8 as BC
 import WeatherService.Sitemap
 import WeatherService.Service
 
-main :: IO()
-main = do
-  updateGlobalLogger rootLoggerName (setLevel INFO) -- change level to DEBUG for testing
-  conn <- open "data/np-weather.db"
-  simpleHTTP nullConf $ do
-    setHeaderM "Content-Type" "application/json"
-    msum [
-      dirs "weather/date" $ do method [GET, POST]
-                               path $ \d -> dayHandler d conn
-      , dirs "weather/date" $ do method PUT
-                                 path $ \d -> path $ \t -> dayPutHandler d t conn
-      , dirs "weather/range" $ do method GET
-                                  path $ \d1 -> path $ \d2 -> rangeHandler d1 d2 conn
-      , dirs "weather/max" $ do method GET
-                                path $ \d1 -> path $ \d2 -> maxRangeHandler d1 d2 conn
-      , dirs "weather/above" $ msum [do method GET
-                                        path $ \t -> aboveTempHandler t conn
-                                    , do method (not . (==) GET)
-                                         methodNotAllowedHandler]
-      ]
-
-
 $(derivePathInfo ''Sitemap)
 
 route :: Connection -> Sitemap -> RouteT Sitemap (ServerPartT IO) Response
@@ -71,7 +49,6 @@ route conn url =
 site :: Connection -> Site Sitemap (ServerPartT IO Response)
 site conn = mkSitePI (runRouteT $ route conn)
 
-{-
 main :: IO()
 main = do
   updateGlobalLogger rootLoggerName (setLevel INFO) -- change level to DEBUG for testing
@@ -79,4 +56,3 @@ main = do
   simpleHTTP nullConf $ do
     setHeaderM "Content-Type" "application/json"
     msum [ implSite "http://localhost:8000" "/weather" $ site conn]
--}
