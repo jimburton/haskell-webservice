@@ -11,7 +11,7 @@ return a JSON object with the data for that date. If weather data is held for th
 date, the response code will be 200 and the body will consist of JSON something like 
 this:
 
-    [{"date":"2017-01-01","temperature":-23.164497}]
+    [{"temperature":-23.164497,"date":"2017-01-01"}]
 
 If no data exists for the date in question, the response code will be 404 and the body 
 will consist of an empty JSON array.
