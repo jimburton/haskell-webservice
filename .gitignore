@@ -21,3 +21,4 @@ cabal.project.local~
 .HTF/
 .ghc.environment.*
 data/np-weather.db
+**/*~undo-tree~
